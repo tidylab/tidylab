@@ -1,0 +1,23 @@
+# Folders
+^\..*/
+^\.Rproj\.user$
+^favicon
+
+# Files
+^\..*
+^.*\.Rproj$
+^codecov\.yml$
+^LICENSE\.md$
+^logo.png
+^vignettes/_common.R$
+
+# Docker
+^docker-compose\.yml$
+^R/utils-DockerCompose\.R$
+
+# pkgdown$
+^docs$
+^pkgdown$
+
+
+
