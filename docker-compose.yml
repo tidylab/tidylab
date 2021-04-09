@@ -1,0 +1,26 @@
+services:
+  ######################################################
+  # R for Machine Learning
+  ######################################################
+  r-ml:
+    image: tidylab/ml:4.0.5
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-ml/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
+  # R for Books
+  ######################################################
+  r-book:
+    image: tidylab/book:4.0.5
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-book/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
+version: "3.8"
+networks:
+  default:
+    name: r-project
