@@ -1,9 +1,9 @@
 Package: tidylab
 Type: Package
 Title: Do Not Install
-URL: https://tidylab.github.io/tidylab/, https://github.com/tidylab/tidylab
+URL: https://github.com/tidylab/tidylab
 BugReports: https://github.com/tidylab/tidylab/issues
-Version: 0.1.0
+Version: 4.0.5
 Date: 2021-03-15
 Authors@R: c(
     person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre"),
