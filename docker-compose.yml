@@ -23,4 +23,4 @@ services:
 version: "3.8"
 networks:
   default:
-    name: r-project
+    name: tidylab
