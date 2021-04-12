@@ -6,7 +6,7 @@ services:
     image: tidylab/ml:4.0.5
     build:
       context: ./
-      dockerfile: ./.dev/docker/r-ml/Dockerfile
+      dockerfile: ./inst/docker/r-ml/Dockerfile
     entrypoint: '/bin/bash'
     restart: "no"
   ######################################################
@@ -16,7 +16,7 @@ services:
     image: tidylab/book:4.0.5
     build:
       context: ./
-      dockerfile: ./.dev/docker/r-book/Dockerfile
+      dockerfile: ./inst/docker/r-book/Dockerfile
     entrypoint: '/bin/bash'
     restart: "no"
   ######################################################
