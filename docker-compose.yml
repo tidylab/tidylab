@@ -1,5 +1,15 @@
 services:
   ######################################################
+  # R for Package Development
+  ######################################################
+  r-package:
+    image: tidylab/package:4.0.5
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-package/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
   # R for Machine Learning
   ######################################################
   r-ml:
