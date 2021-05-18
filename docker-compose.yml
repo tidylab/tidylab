@@ -10,6 +10,16 @@ services:
     entrypoint: '/bin/bash'
     restart: "no"
   ######################################################
+  # R for Project Development
+  ######################################################
+  r-project:
+    image: tidylab/project:4.0.5
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-project/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
   # R for Machine Learning
   ######################################################
   r-ml:

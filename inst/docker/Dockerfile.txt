@@ -33,3 +33,4 @@ RUN R -q -e "update_packages(upgrade = 'always')"
 
 # Additional Packages ----------------------------------------------------------
 RUN R -q -e "install_cran(c('devtools', 'testthat', 'covr', 'roxygen2', 'pkgdown'), dependencies = TRUE)"
+RUN R -q -e "install_cran(c('janitor'), dependencies = TRUE)"
