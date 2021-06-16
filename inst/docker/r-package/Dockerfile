@@ -1,5 +1,5 @@
 # R Package Development: Core --------------------------------------------------
-FROM rocker/tidyverse:4.0.5
+FROM rocker/tidyverse:4.1.0
 
 # Setup ------------------------------------------------------------------------
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
@@ -23,19 +23,13 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Configure RStudio Server -----------------------------------------------------
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2021-03-31\'
+ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2021-05-18\'
 RUN touch .env .Rprofile
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
 RUN echo "require(remotes)" >> .Rprofile
+RUN R -q -e "install_cran('tidyverse', dependencies = TRUE)"
+RUN R -q -e "update_packages(upgrade = 'always')"
 
 # Additional Packages ----------------------------------------------------------
-RUN R -q -e "install_cran(c('devtools', 'testthat', 'covr', 'roxygen2', 'pkgdown'))"
-
-RUN R -q -e "install_cran('tidyverse', dependencies = TRUE)"
-RUN R -q -e "install_cran('tidymodels', dependencies = TRUE)"
-RUN R -q -e "install_cran('mlr3verse', dependencies = TRUE)"
-RUN R -q -e "update_packages(upgrade  = 'always')"
-
-RUN R -q -e "install_cran(c('forecast', 'feasts', 'fable', 'fabletools'))"
-RUN R -q -e "install_cran(c('ranger', 'lightgbm', 'xgboost', 'e1071'))"
+RUN R -q -e "install_cran(c('devtools', 'testthat', 'covr', 'roxygen2', 'pkgdown'), dependencies = TRUE)"

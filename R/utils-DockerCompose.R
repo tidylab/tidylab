@@ -41,6 +41,8 @@ DockerCompose <- R6::R6Class(# nocov start
         #' Stop and remove containers, networks, images and volumes.
         reset = function() DockerCompose$funs$reset(self, private),
         #' @description
+        #' Push an Image to Docker Hub
+        push = function(service = NULL) DockerCompose$funs$push(self, private, service),
         #' Load URL into an HTML Browser
         browse_url = function(service, slug = "") DockerCompose$funs$browse_url(self, private, service, slug)
     ),# end public
@@ -52,6 +54,16 @@ DockerCompose <- R6::R6Class(# nocov start
 DockerCompose$funs <- new.env()
 
 # Public Methods ----------------------------------------------------------
+DockerCompose$funs$push <- function(self, private, service){
+    service <- match.arg(service, names(private$composition$services), several.ok = FALSE)
+    image <- purrr::pluck(private$composition, "services", service, "image")
+    system <- DockerCompose$funs$system
+
+    docker_command <- stringr::str_glue("docker push {image}", image = image)
+    system(docker_command, wait = TRUE)
+    invisible(self)
+}
+
 DockerCompose$funs$reset <- function(self, private){
     system <- DockerCompose$funs$system
     docker_commands <- c(

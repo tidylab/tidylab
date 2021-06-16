@@ -1,22 +1,52 @@
 services:
   ######################################################
+  # R for Package Development
+  ######################################################
+  r-package:
+    image: tidylab/package:4.1.0
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-package/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
+  # R for Project Development
+  ######################################################
+  r-project:
+    image: tidylab/project:4.1.0
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-project/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
   # R for Machine Learning
   ######################################################
   r-ml:
-    image: tidylab/ml:4.0.5
+    image: tidylab/ml:4.1.0
     build:
       context: ./
-      dockerfile: ./.dev/docker/r-ml/Dockerfile
+      dockerfile: ./inst/docker/r-ml/Dockerfile
     entrypoint: '/bin/bash'
     restart: "no"
   ######################################################
   # R for Books
   ######################################################
   r-book:
-    image: tidylab/book:4.0.5
+    image: tidylab/book:4.1.0
     build:
       context: ./
-      dockerfile: ./.dev/docker/r-book/Dockerfile
+      dockerfile: ./inst/docker/r-book/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+  ######################################################
+  # R for Microservices
+  ######################################################
+  r-microservice:
+    image: tidylab/microservice:4.1.0
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-microservice/Dockerfile
     entrypoint: '/bin/bash'
     restart: "no"
   ######################################################
