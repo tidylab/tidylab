@@ -55,6 +55,12 @@ DockerCompose$funs <- new.env()
 
 # Public Methods ----------------------------------------------------------
 DockerCompose$funs$push <- function(self, private, service){
+    service <- match.arg(service, names(private$composition$services), several.ok = FALSE)
+    image <- purrr::pluck(private$composition, "services", service, "image")
+    system <- DockerCompose$funs$system
+
+    docker_command <- stringr::str_glue("docker push {image}", image = image)
+    system(docker_command, wait = TRUE)
     invisible(self)
 }
 
