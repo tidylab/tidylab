@@ -6,6 +6,13 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
+<div class="alert alert-warning">
+
+Please do not install this package. It has no utility outside the
+`tidylab` ecosystem.
+
+</div>
+
 ## Docker Images
 
 Build a specific docker image by running

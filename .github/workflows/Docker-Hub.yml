@@ -1,0 +1,51 @@
+
+on:
+  push:
+    branches:
+      - master
+      - release/*
+
+name: docker-hub
+
+jobs:
+  pkgdown:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.PKGDOWN_PAT }}
+      _R_S3_METHOD_REGISTRATION_NOTE_OVERWRITES_: false
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@master
+
+      - name: Install system dependencies
+        run: |
+          brew install harfbuzz fribidi libgit2
+          rm .Rprofile
+      - name: Prepare
+        run: |
+          echo "utils::chooseCRANmirror(graphics=FALSE, ind = 1)" > .Rprofile
+          Rscript -e "if(!'remotes' %in% rownames(utils::installed.packages())) utils::install.packages('remotes')"
+      - name: Query dependencies
+        run: |
+          pkgs <- remotes::dev_package_deps(dependencies = TRUE); print(pkgs[order(pkgs$package),])
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install dependencies
+        run: |
+          sapply(c("pkgdown", "R6", "stringr", "yaml"), function(x) try(remotes::install_cran(x)))
+        shell: Rscript {0}
+
+      - name: Build Images
+        run: |
+          pkgdown::load_all()
+        shell: Rscript {0}
