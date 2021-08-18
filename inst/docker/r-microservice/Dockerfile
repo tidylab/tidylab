@@ -1,5 +1,5 @@
 # R Package Microservice: Core -------------------------------------------------
-FROM tidylab/package:4.2.0
+FROM tidylab/package:4.1.1
 
 # Additional Packages ----------------------------------------------------------
 RUN R -q -e "install_cran(c('testthat', 'usethis', 'pkgload'), dependencies = 'Depends', upgrade = 'always')"
