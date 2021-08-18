@@ -5,7 +5,7 @@ export DOCKER_BUILDKIT=1
 all: build push
 
 build:
-	docker-compose build 'r-package'
+	docker-compose build
 
 push:
-    docker-compose push 'r-package'
+    docker-compose push
