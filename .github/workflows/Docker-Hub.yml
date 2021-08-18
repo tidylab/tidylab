@@ -1,3 +1,4 @@
+name: ci
 
 on:
   push:
@@ -5,48 +6,26 @@ on:
       - master
       - release/*
 
-name: docker-hub
-
 jobs:
-  docker-hub:
-    runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.PKGDOWN_PAT }}
-      _R_S3_METHOD_REGISTRATION_NOTE_OVERWRITES_: false
+  docker:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: r-lib/actions/setup-r@master
-
-      - name: Install system dependencies
-        run: |
-          brew install harfbuzz fribidi libgit2
-      - name: Prepare
-        run: |
-          echo "utils::chooseCRANmirror(graphics=FALSE, ind = 1)" > .Rprofile
-          Rscript -e "if(!'remotes' %in% rownames(utils::installed.packages())) utils::install.packages('remotes')"
-
-      - name: Query dependencies
-        run: |
-          pkgs <- remotes::dev_package_deps(dependencies = TRUE); print(pkgs[order(pkgs$package),])
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
-
-      - name: Cache R packages
-        uses: actions/cache@v1
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-
-      - name: Install dependencies
-        run: |
-          sapply(c("pkgload", "R6", "stringr", "yaml"), function(x) try(remotes::install_cran(x)))
-        shell: Rscript {0}
-
-      - name: Build Images
-        run: |
-          pkgload::load_all()
-          .Rprofile$docker$start('r-package')
-        shell: Rscript {0}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: user/app:latest
