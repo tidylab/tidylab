@@ -36,4 +36,5 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Build and Push
         run: |
-          make all
+          make build
+          make push
