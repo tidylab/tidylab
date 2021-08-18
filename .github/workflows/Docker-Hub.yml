@@ -1,8 +1,8 @@
 name: docker-hub
 
 on:
-  schedule:
-    - cron: "0 5 * * 1"
+  # schedule:
+  #   - cron: "0 5 * * 1"
   push:
     branches:
       - master
@@ -36,5 +36,4 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Build and Push
         run: |
-          make build
-          make push
+          make all
