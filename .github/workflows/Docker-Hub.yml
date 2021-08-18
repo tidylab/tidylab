@@ -8,7 +8,7 @@ on:
 name: docker-hub
 
 jobs:
-  pkgdown:
+  docker-hub:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.PKGDOWN_PAT }}
@@ -21,11 +21,11 @@ jobs:
       - name: Install system dependencies
         run: |
           brew install harfbuzz fribidi libgit2
-          rm .Rprofile
       - name: Prepare
         run: |
           echo "utils::chooseCRANmirror(graphics=FALSE, ind = 1)" > .Rprofile
           Rscript -e "if(!'remotes' %in% rownames(utils::installed.packages())) utils::install.packages('remotes')"
+
       - name: Query dependencies
         run: |
           pkgs <- remotes::dev_package_deps(dependencies = TRUE); print(pkgs[order(pkgs$package),])
@@ -42,10 +42,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sapply(c("pkgdown", "R6", "stringr", "yaml"), function(x) try(remotes::install_cran(x)))
+          sapply(c("pkgload", "R6", "stringr", "yaml"), function(x) try(remotes::install_cran(x)))
         shell: Rscript {0}
 
       - name: Build Images
         run: |
-          pkgdown::load_all()
+          pkgload::load_all()
+          .Rprofile$docker$start('r-package')
         shell: Rscript {0}
