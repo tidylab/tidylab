@@ -1,17 +1,25 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # `tidylab` Packages Infrastructure
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-<div class="alert alert-warning">
-
-Please do not install this package. It has no utility outside the
-`tidylab` ecosystem.
-
-</div>
+<div class="alert alert-warning">Please do not install this package. It has no utility outside the `tidylab` ecosystem.</div>
 
 ## Docker Images
 
