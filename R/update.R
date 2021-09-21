@@ -99,7 +99,7 @@ tidylab_deps <- function(recursive = FALSE, repos = getOption("repos")) {
 }
 
 packageVersion <- function(pkg) {
-  if (rlang::is_installed(pkg)) {
+  if (pkg %in% rownames(installed.packages())) {
     utils::packageVersion(pkg)
   } else {
     0
