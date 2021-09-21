@@ -1,5 +1,16 @@
 services:
   ######################################################
+  # R Testing
+  ######################################################
+  r-test:
+    image: r-package/tidylab
+    build:
+      context: ./
+      dockerfile: ./.dev/docker/r-test/Dockerfile
+    entrypoint: '/bin/bash'
+    container_name: r_test
+    restart: "no"
+  ######################################################
   # R for Package Development
   ######################################################
   r-package:
