@@ -58,7 +58,7 @@ print.tidylab_conflicts <- function(x, ..., startup = FALSE) {
   cli::cat_line(tidylab_conflict_message(x))
 }
 
-#' @importFrom magrittr %>%
+#' @importFrom purrr %>%
 confirm_conflict <- function(packages, name) {
   # Only look at functions
   objs <- packages %>%
