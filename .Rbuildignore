@@ -25,3 +25,4 @@
 ^README\.Rmd$
 ^tidylab\.Rproj$
 ^data-raw$
+^Makefile$

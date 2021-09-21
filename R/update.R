@@ -4,7 +4,11 @@
 #' dependencies) are up-to-date, and will install after an interactive
 #' confirmation.
 #'
-#' @inheritParams tidylab_deps
+#' @param recursive If \code{TRUE}, will also list all dependencies of
+#'   tidylab packages.
+#' @param repos The repositories to use to check for updates.
+#'   Defaults to \code{getOption("repos")}.
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -99,7 +103,7 @@ tidylab_deps <- function(recursive = FALSE, repos = getOption("repos")) {
 }
 
 packageVersion <- function(pkg) {
-  if (pkg %in% rownames(installed.packages())) {
+  if (pkg %in% rownames(utils::installed.packages())) {
     utils::packageVersion(pkg)
   } else {
     0

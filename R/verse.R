@@ -37,7 +37,7 @@ tidylab_attach <- function() {
 
   msg(paste(info, collapse = "\n"), startup = TRUE)
 
-  suppressPackageStartupMessages(
+  if(interactive()) suppressPackageStartupMessages(
     lapply(to_load, library, character.only = TRUE, warn.conflicts = FALSE)
   )
 
