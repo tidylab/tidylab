@@ -1,16 +1,18 @@
-.onAttach <- function(lib, pkg,...){#nocov start
-    # options(
-    #     usethis.quiet = TRUE
-    # )
+.onAttach <- function(...) {
+  needed <- core[!is_attached(core)]
+  if (length(needed) == 0)
+    return()
 
-    # if(interactive()) packageStartupMessage( paste(
-    #     "\n\033[44m\033[37m",
-    #     "\nBuild all docker images with:",
-    #     "\n.Rprofile$docker$reset()",
-    #     "\nSys.sleep(10)",
-    #     "\n.Rprofile$docker$start()",
-    #     "\n\033[39m\033[49m",
-    #     sep="")
-    # )
+  crayon::num_colors(TRUE)
+  tidylab_attach()
 
-}#nocov end
+  if (!"package:conflicted" %in% search()) {
+    x <- tidylab_conflicts()
+    msg(tidylab_conflict_message(x), startup = TRUE)
+  }
+
+}
+
+is_attached <- function(x) {
+  paste0("package:", x) %in% search()
+}

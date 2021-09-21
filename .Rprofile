@@ -67,15 +67,45 @@ assign(".Rprofile", new.env(), envir = globalenv())
     .Rprofile$utils$run_script(path_script, job_name)
 }
 
-.Rprofile$docker$push <- function(service = NULL){
+# pkgdown -----------------------------------------------------------------
+.Rprofile$pkgdown$browse <- function(name){
+    if(missing(name)){
+        path <- "./docs"
+        name <- "index.html"
+    } else {
+        path <- "./docs/articles"
+        name <- match.arg(name, list.files(path, "*.html"))
+    }
+    try(browseURL(stringr::str_glue('{path}/{name}', path = path, name = name)))
+    invisible()
+}
+
+.Rprofile$pkgdown$create <- function(){
     path_script <- tempfile("system-", fileext = ".R")
-    job_name <- "Pushing Docker Image"
-    define_service <- paste0("service <- c(", paste0(paste0("'",service,"'"), collapse = ", "),")")
-    define_service <- if(is.null(service)) "service = NULL" else define_service
+    job_name <- "Rendering Package Website"
+
     writeLines(c(
-        "source('./R/utils-DockerCompose.R')",
-        define_service,
-        "DockerCompose$new()$push(service)"), path_script)
+        "devtools::document()",
+        "rmarkdown::render('README.Rmd', 'md_document')",
+        "unlink(usethis::proj_path('docs'), TRUE, TRUE)",
+        paste0("try(detach('package:",read.dcf("DESCRIPTION", "Package")[[1]], "', unload = TRUE, force = TRUE))"),
+        "pkgdown::build_site(devel = FALSE, lazy = FALSE)"
+    ), path_script)
+
+    .Rprofile$utils$run_script(path_script, job_name)
+}
+
+.Rprofile$pkgdown$update <- function(){
+    path_script <- tempfile("system-", fileext = ".R")
+    job_name <- "Rendering Package Website"
+
+    writeLines(c(
+        "devtools::document()",
+        "rmarkdown::render('README.Rmd', 'md_document')",
+        paste0("try(detach('package:",read.dcf("DESCRIPTION", "Package")[[1]], "', unload = TRUE, force = TRUE))"),
+        "pkgdown::build_site(devel = TRUE, lazy = TRUE)"
+    ), path_script)
+
     .Rprofile$utils$run_script(path_script, job_name)
 }
 
