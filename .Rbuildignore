@@ -1,14 +1,15 @@
 # Folders
 ^\..*/
 ^\.Rproj\.user$
-^favicon
+^inst$
+^docs$
+^pkgdown$
 
 # Files
 ^\..*
 ^.*\.Rproj$
 ^codecov\.yml$
 ^LICENSE\.md$
-^logo.png
 ^vignettes/_common.R$
 
 # Docker
@@ -22,3 +23,6 @@
 
 
 ^README\.Rmd$
+^tidylab\.Rproj$
+^data-raw$
+^Makefile$
