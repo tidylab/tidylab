@@ -5,3 +5,8 @@ man/
 # Files
 
 .Rhistory
+.Rproj.user
+.Rdata
+.httr-oauth
+.DS_Store
+inst/files/
