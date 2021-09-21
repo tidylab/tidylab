@@ -55,7 +55,10 @@ DockerCompose$funs <- new.env()
 
 # Public Methods ----------------------------------------------------------
 DockerCompose$funs$push <- function(self, private, service){
-    service <- match.arg(service, names(private$composition$services), several.ok = FALSE)
+    browser()
+    services <- names(private$composition$services)
+    service <- if(is.null(service)) services else match.arg(service, services, several.ok = FALSE)
+    print(private$composition)
     image <- purrr::pluck(private$composition, "services", service, "image")
     system <- DockerCompose$funs$system
 
