@@ -1,7 +1,7 @@
 Package: tidylab
 Type: Package
 Title: Shared Infrastructure of Tidylab Package Collection
-URL: https://github.com/tidylab/tidylab
+URL: https://tidylab.github.io/tidylab/, https://github.com/tidylab/tidylab
 BugReports: https://github.com/tidylab/tidylab/issues
 Version: 4.1.1
 Date: 2021-09-21
