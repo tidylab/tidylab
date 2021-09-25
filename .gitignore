@@ -10,3 +10,4 @@ man/
 .httr-oauth
 .DS_Store
 inst/files/
+docs/
