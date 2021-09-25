@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tidylab.github.io/tidylab//index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//reference/tidylab_conflicts.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//reference/tidylab_deps.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//reference/tidylab_logo.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//reference/tidylab_packages.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//reference/tidylab_sitrep.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//reference/tidylab_update.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab//articles/articles/01-docker-images.html</loc>
+  </url>
+</urlset>
