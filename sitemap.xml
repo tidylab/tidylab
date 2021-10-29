@@ -4,6 +4,9 @@
     <loc>https://tidylab.github.io/tidylab//index.html</loc>
   </url>
   <url>
+    <loc>https://tidylab.github.io/tidylab//reference/logo.html</loc>
+  </url>
+  <url>
     <loc>https://tidylab.github.io/tidylab//reference/tidylab_conflicts.html</loc>
   </url>
   <url>
@@ -14,9 +17,6 @@
   </url>
   <url>
     <loc>https://tidylab.github.io/tidylab//reference/tidylab_packages.html</loc>
-  </url>
-  <url>
-    <loc>https://tidylab.github.io/tidylab//reference/tidylab_sitrep.html</loc>
   </url>
   <url>
     <loc>https://tidylab.github.io/tidylab//reference/tidylab_update.html</loc>
