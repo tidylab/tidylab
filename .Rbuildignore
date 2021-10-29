@@ -26,3 +26,4 @@
 ^tidylab\.Rproj$
 ^data-raw$
 ^Makefile$
+^vignettes$

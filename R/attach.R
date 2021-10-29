@@ -1,5 +1,3 @@
-core <- c("usethat", "R6P", "microservices", "decorators")
-
 core_unloaded <- function() {
   search <- paste0("package:", core)
   core[!search %in% search()]

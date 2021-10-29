@@ -30,9 +30,10 @@ status](https://github.com/tidylab/tidylab/workflows/R-CMD-check/badge.svg)](htt
 
 ## Overview
 
-The tidylab is a set of packages that work in harmony because they share common
-data representations and API design. The __tidylab__ package is designed to make
-it easy to install and load core packages from the tidylab in a single command.
+`tidylab` is a set of packages that work in harmony because they share common
+software design principles -- domain driven design (ddd) and microservice
+architecture. The __tidylab__ package is designed to make it easy to install and
+load core packages from the tidylab in a single command.
 
 ## Installation
 

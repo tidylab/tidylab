@@ -1,4 +1,3 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- https://github.com/tidylab/tidylab -->
 
@@ -23,13 +22,11 @@ tidylab in a single command.
 
 ## Installation
 
-``` r
-# Install from CRAN
-install.packages("tidylab")
-# Or the development version from GitHub
-# install.packages("remotes")
-remotes::install_github("tidylab/tidylab")
-```
+    # Install from CRAN
+    install.packages("tidylab")
+    # Or the development version from GitHub
+    # install.packages("remotes")
+    remotes::install_github("tidylab/tidylab")
 
 ## Usage
 
@@ -46,33 +43,22 @@ remotes::install_github("tidylab/tidylab")
 You also get a condensed summary of conflicts with other packages you
 have loaded:
 
-``` r
-library(tidylab)
-#> -- Attaching packages ----------------------------------------- tidylab 0.0.1 --
-#> v decorators    0.1.0     v R6P           0.2.2
-#> v microservices 0.1.2     v usethat       0.3.0
-#> Warning: package 'usethat' was built under R version 4.1.1
-#> 
-```
+    library(tidylab)
 
 You can see conflicts created later with `tidylab_conflicts()`:
 
-``` r
-library(MASS)
-tidylab_conflicts()
-```
+    library(MASS)
+    tidylab_conflicts()
 
 And you can check that all tidylab packages are up-to-date with
 `tidylab_update()`:
 
-``` r
-tidylab_update()
-#> The following packages are out of date:
-#>  * broom (0.4.0 -> 0.4.1)
-#>  * DBI   (0.4.1 -> 0.5)
-#>  * Rcpp  (0.12.6 -> 0.12.7)
-#> Update now?
-#> 
-#> 1: Yes
-#> 2: No
-```
+    tidylab_update()
+    #> The following packages are out of date:
+    #>  * broom (0.4.0 -> 0.4.1)
+    #>  * DBI   (0.4.1 -> 0.5)
+    #>  * Rcpp  (0.12.6 -> 0.12.7)
+    #> Update now?
+    #> 
+    #> 1: Yes
+    #> 2: No

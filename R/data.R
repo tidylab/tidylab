@@ -1,5 +1,5 @@
 #' @title Tidylab ASCII logo
-#' @noRd
+#' @keywords internal
 #' @examples
 #' print(logo)
 "logo"
