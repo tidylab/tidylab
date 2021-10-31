@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   articles/01-docker-images: 01-docker-images.html
-last_built: 2021-10-29T23:14Z
+last_built: 2021-10-31T01:41Z
 urls:
   reference: https://tidylab.github.io/tidylab//reference
   article: https://tidylab.github.io/tidylab//articles
