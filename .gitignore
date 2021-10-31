@@ -11,3 +11,6 @@ man/
 .DS_Store
 inst/files/
 docs/
+cran-comments.md
+CRAN-RELEASE
+revdep/

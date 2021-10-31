@@ -24,18 +24,20 @@ Build a specific docker image by running
 
 The available services are
 
-| Service Name     | Description                                      |
-|------------------|--------------------------------------------------|
-| `r-package`      | Docker image for building R packages.            |
-| `r-project`      | Docker image for building R projects.            |
-| `r-ml`           | Docker image for building machine learning in R. |
-| `r-book`         | Docker image for authoring books in R.           |
-| `r-microservice` | Docker image for deploying microservices in R.   |
+| Service Name     | Description                                                             |
+|------------------|-------------------------------------------------------------------------|
+| `r-package`      | Docker image for building R packages.                                   |
+| `r-project`      | Docker image for building R projects.                                   |
+| `r-ml`           | Docker image for building machine learning in R.                        |
+| `r-book`         | Docker image for authoring books in R.                                  |
+| `r-microservice` | Docker image for deploying microservices in R.                          |
+| `r-stanverse`    | Docker image for developing [Stan](https://mc-stan.org/)-based projects |
 
 For example, to build the `r-package` service run
 
     .Rprofile$docker$start("r-package")
 
-## Pushing Docker Images to Docker Reposetory
+## Pushing Docker Images to Docker Repository
 
-You can see the available `tidylab` images on [Docker Hub](https://hub.docker.com/orgs/tidylab/repositories).
+You can see the available `tidylab` images on [Docker
+Hub](https://hub.docker.com/orgs/tidylab/repositories).
