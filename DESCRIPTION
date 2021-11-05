@@ -1,6 +1,6 @@
 Type: Package
 Package: tidylab
-Title: Shared Infrastructure of Tidylab Package Collection
+Title: Shared Infrastructure of 'Tidylab' Package Collection
 Version: 4.1.1
 Date: 2021-08-10
 Authors@R: 
@@ -13,7 +13,7 @@ Authors@R:
              role = c("cph", "fnd")))
 Maintainer: Harel Lustiger <tidylab@gmail.com>
 Description: Selection of packages designed to be loaded in concert. The
-    tidylab package collection revolves around project development and
+    'tidylab' package collection revolves around project development and
     deployment. The purpose of this is to make it easy to install and
     subsequently load those packages.
 License: MIT + file LICENSE
@@ -33,7 +33,7 @@ Imports:
     tibble (>= 3.1.0),
     usethat
 Suggests: 
-    testthat
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 Language: en-GB
 LazyData: true

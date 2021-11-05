@@ -146,6 +146,7 @@ ls_env <- function(env) {
 #' @param recursive If \code{TRUE}, will also check all dependencies of
 #'   tidylab packages.
 #' @export
+#' @return No return value, called for side effects.
 #' @examples
 #' \dontrun{
 #' tidylab_update()
@@ -179,6 +180,7 @@ tidylab_update <- function(recursive = FALSE) {
 #' @param recursive If \code{TRUE}, will also list all dependencies of
 #'   tidylab packages.
 #' @export
+#' @return (`tibble`) A table with package dependencies.
 tidylab_deps <- function(recursive = FALSE) {
   pkgs <- utils::available.packages()
   deps <- tools::package_dependencies("tidylab", pkgs, recursive = recursive)
@@ -198,7 +200,7 @@ tidylab_deps <- function(recursive = FALSE) {
   behind <- purrr::map2_lgl(cran_version, local_version, `>`)
 
   tibble::tibble(
-    package = pkg_deps,
+    package = if(is.null(pkg_deps)) character(0) else pkg_deps,
     cran = cran_version %>% purrr::map_chr(as.character),
     local = local_version %>% purrr::map_chr(as.character),
     behind = behind
@@ -229,6 +231,7 @@ text_col <- function(x) {
 #'
 #' @param include_self Include tidylab in the list?
 #' @export
+#' @return (`character`) The names of the imported packages.
 #' @examples
 #' tidylab_packages()
 tidylab_packages <- function(include_self = TRUE) {

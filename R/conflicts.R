@@ -9,6 +9,7 @@
 #' existing code.
 #'
 #' @export
+#' @return (`tidylab_conflicts`) A list with conflicted functions.
 #' @examples
 #' tidylab_conflicts()
 tidylab_conflicts <- function() {

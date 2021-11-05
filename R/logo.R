@@ -8,9 +8,9 @@
 #'
 #' @md
 #' @export
+#' @return (`tidylab_logo`) ASCII art of the Tidylab logo.
 #' @examples
 #' tidylab_logo()
-
 tidylab_logo <- function(unicode = l10n_info()$`UTF-8`) {
   logo <- logo
 

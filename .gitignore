@@ -1,6 +1,9 @@
 # Folders
 .Rproj.user/
+docs/
+inst/files/
 man/
+revdep/
 
 # Files
 
@@ -9,8 +12,6 @@ man/
 .Rdata
 .httr-oauth
 .DS_Store
-inst/files/
-docs/
+
 cran-comments.md
 CRAN-RELEASE
-revdep/
