@@ -9,7 +9,7 @@
 #' @param slug (`character`) URL slug (e.g. \code{shiny-app-name}).
 #' @family docker
 #' @export
-DockerCompose <- R6::R6Class(# nocov start
+DockerCompose <- R6::R6Class( # nocov start
     classname = "DockerCompose",
     cloneable = FALSE,
     lock_objects = FALSE,
@@ -18,7 +18,7 @@ DockerCompose <- R6::R6Class(# nocov start
         #' @description
         #' Initialize a DockerCompose object
         #' @param path_docker_compose (`character`) Path to docker-compose file.
-        initialize = function(path_docker_compose = "./docker-compose.yml"){
+        initialize = function(path_docker_compose = "./docker-compose.yml") {
             stopifnot(file.exists(path_docker_compose))
             private$path_docker_compose <- path_docker_compose
             private$composition <- yaml::read_yaml(path_docker_compose, eval.expr = FALSE)
@@ -45,19 +45,19 @@ DockerCompose <- R6::R6Class(# nocov start
         push = function(service = NULL) DockerCompose$funs$push(self, private, service),
         #' Load URL into an HTML Browser
         browse_url = function(service, slug = "") DockerCompose$funs$browse_url(self, private, service, slug)
-    ),# end public
+    ), # end public
     private = list(
         path_docker_compose = c(),
         composition = list()
     )
-)# nocov end
+) # nocov end
 DockerCompose$funs <- new.env()
 
 # Public Methods ----------------------------------------------------------
-DockerCompose$funs$push <- function(self, private, service){
+DockerCompose$funs$push <- function(self, private, service) {
     browser()
     services <- names(private$composition$services)
-    service <- if(is.null(service)) services else match.arg(service, services, several.ok = FALSE)
+    service <- if (is.null(service)) services else match.arg(service, services, several.ok = FALSE)
     print(private$composition)
     image <- purrr::pluck(private$composition, "services", service, "image")
     system <- DockerCompose$funs$system
@@ -67,7 +67,7 @@ DockerCompose$funs$push <- function(self, private, service){
     invisible(self)
 }
 
-DockerCompose$funs$reset <- function(self, private){
+DockerCompose$funs$reset <- function(self, private) {
     system <- DockerCompose$funs$system
     docker_commands <- c(
         "docker-compose down",
@@ -80,16 +80,16 @@ DockerCompose$funs$reset <- function(self, private){
     invisible(self)
 }
 
-DockerCompose$funs$restart <- function(self, private, service){
+DockerCompose$funs$restart <- function(self, private, service) {
     system <- DockerCompose$funs$system
     DockerCompose$funs$stop(self, private)
     DockerCompose$funs$start(self, private, service)
     invisible(self)
 }
 
-DockerCompose$funs$start <- function(self, private, service){
+DockerCompose$funs$start <- function(self, private, service) {
     is.not.null <- Negate(is.null)
-    if(is.not.null(service)){
+    if (is.not.null(service)) {
         service <- match.arg(service, names(private$composition$services), several.ok = TRUE)
     }
 
@@ -99,29 +99,34 @@ DockerCompose$funs$start <- function(self, private, service){
     invisible(self)
 }
 
-DockerCompose$funs$stop <- function(self, private){
+DockerCompose$funs$stop <- function(self, private) {
     system <- DockerCompose$funs$system
     docker_command <- stringr::str_glue("docker-compose down")
     system(docker_command, wait = TRUE)
     invisible(self)
 }
 
-DockerCompose$funs$browse_url <- function(self, private, service, slug){
+DockerCompose$funs$browse_url <- function(self, private, service, slug) {
     service <- match.arg(service, names(private$composition$services))
     url <- "localhost"
     port <- stringr::str_remove(self$get(service, "ports"), ":.*")
-    if(length(port) == 0) port <- "8080"
+    if (length(port) == 0) port <- "8080"
     address <- stringr::str_glue("http://{url}:{port}/{slug}", url = "localhost", port = port, slug = slug)
     try(browseURL(utils::URLencode(address)))
     return(self)
 }
 
-DockerCompose$funs$get <- function(self, private, service, field){
+DockerCompose$funs$get <- function(self, private, service, field) {
     stopifnot(!missing(field))
     service <- match.arg(service, names(private$composition$services))
     private$composition$services[[service]][[field]]
 }
 
 # Helpers -----------------------------------------------------------------
-DockerCompose$funs$system <- function(command, ...){ message("\033[43m\033[44m",command,"\033[43m\033[49m") ; base::system(command, ...) }
-DockerCompose$funs$escape_character <- function(x){ if(is.character(x)) paste0('"', x, '"') else x }
+DockerCompose$funs$system <- function(command, ...) {
+    message("\033[43m\033[44m", command, "\033[43m\033[49m")
+    base::system(command, ...)
+}
+DockerCompose$funs$escape_character <- function(x) {
+    if (is.character(x)) paste0('"', x, '"') else x
+}
