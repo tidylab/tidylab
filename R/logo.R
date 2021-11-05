@@ -29,10 +29,3 @@ tidylab_logo <- function(unicode = l10n_info()$`UTF-8`) {
 
   structure(crayon::blue(logo), class = "tidylab_logo")
 }
-
-#' @export
-
-print.tidylab_logo <- function(x, ...) {
-  cat(x, ..., sep = "\n")
-  invisible(x)
-}

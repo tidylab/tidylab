@@ -1,46 +1,3 @@
-core_loaded <- function() {
-  search <- paste0("package:", core)
-  core[search %in% search()]
-}
-core_unloaded <- function() {
-  search <- paste0("package:", core)
-  core[!search %in% search()]
-}
-
-
-tidylab_attach <- function() {
-  to_load <- core_unloaded()
-  if (length(to_load) == 0)
-    return(invisible())
-
-  msg(
-    cli::rule(
-      left = crayon::bold("Attaching packages"),
-      right = paste0("tidylab ", package_version("tidylab"))
-    ),
-    startup = TRUE
-  )
-
-  versions <- vapply(to_load, package_version, character(1))
-  packages <- paste0(
-    crayon::green(cli::symbol$tick), " ", crayon::blue(format(to_load)), " ",
-    crayon::col_align(versions, max(crayon::col_nchar(versions)))
-  )
-
-  if (length(packages) %% 2 == 1) {
-    packages <- append(packages, "")
-  }
-  col1 <- seq_len(length(packages) / 2)
-  info <- paste0(packages[col1], "     ", packages[-col1])
-
-  msg(paste(info, collapse = "\n"), startup = TRUE)
-
-  if(interactive()) suppressPackageStartupMessages(
-    lapply(to_load, library, character.only = TRUE, warn.conflicts = FALSE)
-  )
-
-  invisible()
-}
 
 package_version <- function(x) {
   version <- as.character(unclass(utils::packageVersion(x))[[1]])
@@ -234,7 +191,7 @@ text_col <- function(x) {
 #' @return (`character`) The names of the imported packages.
 #' @examples
 #' tidylab_packages()
-tidylab_packages <- function(include_self = TRUE) {
+tidylab_packages <- function(include_self = TRUE) { # nocov start
   raw <- utils::packageDescription("tidylab")$Imports
   imports <- strsplit(raw, ",")[[1]]
   parsed <- gsub("^\\s+|\\s+$", "", imports)
@@ -245,20 +202,12 @@ tidylab_packages <- function(include_self = TRUE) {
   }
 
   names
-}
+} # nocov end
 
 invert <- function(x) {
   if (length(x) == 0) return()
   stacked <- utils::stack(x)
   tapply(as.character(stacked$ind), stacked$values, list)
-}
-
-
-style_grey <- function(level, ...) {
-  crayon::style(
-    paste0(...),
-    crayon::make_style(grDevices::grey(level), grey = TRUE)
-  )
 }
 
 .onAttach <- function(...) {

@@ -3,16 +3,6 @@ core_unloaded <- function() {
   core[!search %in% search()]
 }
 
-# Attach the package from the same package library it was
-# loaded from before.
-same_library <- function(pkg) {
-  loc <- if (pkg %in% loadedNamespaces()) dirname(getNamespaceInfo(pkg, "path"))
-  do.call(
-    "library",
-    list(pkg, lib.loc = loc, character.only = TRUE, warn.conflicts = FALSE)
-  )
-}
-
 tidylab_attach <- function() {
   to_load <- core_unloaded()
   if (length(to_load) == 0)
@@ -40,8 +30,8 @@ tidylab_attach <- function() {
 
   msg(paste(info, collapse = "\n"), startup = TRUE)
 
-  suppressPackageStartupMessages(
-    lapply(to_load, same_library)
+  if(interactive()) suppressPackageStartupMessages(
+    lapply(to_load, library, character.only = TRUE, warn.conflicts = FALSE)
   )
 
   invisible()
