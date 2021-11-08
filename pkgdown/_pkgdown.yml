@@ -1,0 +1,16 @@
+url: https://tidylab.github.io/tidylab/
+title: "Develop R Projects for Production"
+authors:
+  Harel Lustiger:
+    href: https://github.com/tidylab
+  Tidylab:
+    href: "https://github.com/tidylab"
+    html: "<img src='https://github.com/tidylab/tidylab/blob/master/favicon/apple-touch-icon-120x120.png?raw=true' height=24>"
+
+
+# Articles ----------------------------------------------------------------
+articles:
+- title: "Tidylab Infrastructure"
+  contents:
+  - articles/01-docker-images
+

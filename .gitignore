@@ -1,7 +1,17 @@
 # Folders
 .Rproj.user/
+docs/
+inst/files/
 man/
+revdep/
 
 # Files
 
 .Rhistory
+.Rproj.user
+.Rdata
+.httr-oauth
+.DS_Store
+
+cran-comments.md
+CRAN-RELEASE
