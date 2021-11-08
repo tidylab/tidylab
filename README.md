@@ -10,16 +10,17 @@
 status](https://www.r-pkg.org/badges/version/tidylab)](https://CRAN.R-project.org/package=tidylab)
 [![R build
 status](https://github.com/tidylab/tidylab/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/tidylab/actions)
-[![codecov](https://codecov.io/gh/tidylab/tidylab/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://codecov.io/gh/tidylab/tidylab)
+[![codecov](https://codecov.io/gh/tidylab/tidylab/branch/master/graph/badge.svg?token=U6FL5N32FL)](https://app.codecov.io/gh/tidylab/tidylab)
 
 <!-- badges: end -->
 
 ## Overview
 
-The tidylab is a set of packages that work in harmony because they share
-common data representations and API design. The **tidylab** package is
-designed to make it easy to install and load core packages from the
-tidylab in a single command.
+`tidylab` is a set of packages that work in harmony because they share
+common software design principles – domain driven design (ddd) and
+microservice architecture. The **tidylab** package is designed to make
+it easy to install and load core packages from the tidylab in a single
+command.
 
 ## Installation
 

@@ -26,3 +26,6 @@
 ^tidylab\.Rproj$
 ^data-raw$
 ^Makefile$
+^vignettes$
+^cran-comments\.md$
+^CRAN-RELEASE$

@@ -1,4 +1,4 @@
-# R Package Project: Core ------------------------------------------------------
+# R Package Development: Project -----------------------------------------------
 FROM tidylab/package:4.1.1
 
 # Additional Packages ----------------------------------------------------------

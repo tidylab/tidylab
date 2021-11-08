@@ -1,6 +1,5 @@
 # R Package Development: Core --------------------------------------------------
 FROM tidylab/package:4.1.1
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2021-09-21\'
 RUN touch .env .Rprofile
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 

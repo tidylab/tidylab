@@ -8,31 +8,26 @@
 #'
 #' @md
 #' @export
+#' @return (`tidylab_logo`) ASCII art of the Tidylab logo.
 #' @examples
 #' tidylab_logo()
-
 tidylab_logo <- function(unicode = l10n_info()$`UTF-8`) {
-  logo <- logo
+    logo <- logo
 
-  hexa <- c("*", ".", "o", "*", ".", "*", ".", "o", ".", "*")
-  if (unicode) hexa <- c("*" = "\u2b22", "o" = "\u2b21", "." = ".")[hexa]
+    hexa <- c("*", ".", "o", "*", ".", "*", ".", "o", ".", "*")
+    if (unicode) hexa <- c("*" = "\u2b22", "o" = "\u2b21", "." = ".")[hexa]
 
-  cols <- c("red", "yellow", "green", "magenta", "cyan",
-            "yellow", "green", "white", "magenta", "cyan")
+    cols <- c(
+        "red", "yellow", "green", "magenta", "cyan",
+        "yellow", "green", "white", "magenta", "cyan"
+    )
 
-  col_hexa <- purrr::map2(hexa, cols, ~ crayon::make_style(.y)(.x))
+    col_hexa <- purrr::map2(hexa, cols, ~ crayon::make_style(.y)(.x))
 
-  for (i in 0:9) {
-    pat <- paste0("\\b", i, "\\b")
-    logo <- sub(pat, col_hexa[[i + 1]], logo)
-  }
+    for (i in 0:9) {
+        pat <- paste0("\\b", i, "\\b")
+        logo <- sub(pat, col_hexa[[i + 1]], logo)
+    }
 
-  structure(crayon::blue(logo), class = "tidylab_logo")
-}
-
-#' @export
-
-print.tidylab_logo <- function(x, ...) {
-  cat(x, ..., sep = "\n")
-  invisible(x)
+    structure(crayon::blue(logo), class = "tidylab_logo")
 }

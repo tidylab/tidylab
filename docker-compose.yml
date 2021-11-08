@@ -69,6 +69,18 @@ services:
     depends_on:
       - "r-package"
   ######################################################
+  # R for Stan <https://mc-stan.org/>
+  ######################################################
+  r-stanverse:
+    image: tidylab/stanverse:4.1.1
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-stanverse/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+    depends_on:
+      - "r-package"
+  ######################################################
 version: "3.3"
 networks:
   default:
