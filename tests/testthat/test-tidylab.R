@@ -20,6 +20,7 @@ test_that("tidylab_packages returns package dependencies", {
 
 test_that("tidylab_deps returns package dependencies", {
     skip_if_offline()
+    skip_on_cran()
     withr::local_options(list(repos = "http://cran.r-project.org"))
     expect_s3_class(tidylab_deps(), "data.frame")
 })
