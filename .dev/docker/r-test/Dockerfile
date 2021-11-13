@@ -1,7 +1,5 @@
 # R Package Development: Core --------------------------------------------------
-FROM tidylab/package:4.1.1
-RUN touch .env .Rprofile
-RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
+FROM tidylab/package:4.1.2
 
 # Install Project Dependencies -------------------------------------------------
 COPY ./DESCRIPTION ./DESCRIPTION
