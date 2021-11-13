@@ -1,5 +1,5 @@
 # R Package Development: Core --------------------------------------------------
-FROM rocker/tidyverse:4.1.1
+FROM rocker/tidyverse:4.1.2
 
 # Setup ------------------------------------------------------------------------
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
@@ -23,7 +23,7 @@ RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Configure RStudio Server -----------------------------------------------------
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2021-08-10\'
+ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2021-11-01\'
 RUN touch .env .Rprofile
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
