@@ -81,6 +81,18 @@ services:
     depends_on:
       - "r-package"
   ######################################################
+  # R for Robyn <https://github.com/facebookexperimental/Robyn/>
+  ######################################################
+  r-robyn:
+    image: tidylab/robyn:4.1.2
+    build:
+      context: ./
+      dockerfile: ./inst/docker/r-robyn/Dockerfile
+    entrypoint: '/bin/bash'
+    restart: "no"
+    depends_on:
+      - "r-package"
+  ######################################################
 version: "3.3"
 networks:
   default:
