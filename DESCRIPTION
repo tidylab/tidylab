@@ -1,24 +1,20 @@
 Type: Package
 Package: tidylab
 Title: Shared Infrastructure of 'Tidylab' Package Collection
-Version: 4.1.2
-Date: 2021-11-01
-Authors@R: 
-    c(person(given = "Harel",
-             family = "Lustiger",
-             role = c("aut", "cre"),
-             email = "tidylab@gmail.com",
-             comment = c(ORCID = "0000-0003-2953-9598")),
-      person(given = "Tidylab",
-             role = c("cph", "fnd")))
+Version: 4.1.3
+Date: 2022-03-10
+Authors@R: c(
+    person("Harel", "Lustiger", , "tidylab@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-2953-9598")),
+    person("Tidylab", role = c("cph", "fnd"))
+  )
 Maintainer: Harel Lustiger <tidylab@gmail.com>
 Description: Selection of packages designed to be loaded in concert. The
     'tidylab' package collection revolves around project development and
     deployment. The purpose of this is to make it easy to install and
     subsequently load those packages.
 License: MIT + file LICENSE
-URL: https://tidylab.github.io/tidylab/,
-    https://github.com/tidylab/tidylab
+URL: https://tidylab.github.io/tidylab/
 BugReports: https://github.com/tidylab/tidylab/issues
 Depends: 
     R (>= 3.3)

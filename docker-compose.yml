@@ -14,7 +14,7 @@ services:
   # R for Package Development
   ######################################################
   r-package:
-    image: tidylab/package:4.1.2
+    image: tidylab/package:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-package/Dockerfile
@@ -24,7 +24,7 @@ services:
   # R for Project Development
   ######################################################
   r-project:
-    image: tidylab/project:4.1.2
+    image: tidylab/project:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-project/Dockerfile
@@ -36,7 +36,7 @@ services:
   # R for Machine Learning
   ######################################################
   r-ml:
-    image: tidylab/ml:4.1.2
+    image: tidylab/ml:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-ml/Dockerfile
@@ -48,7 +48,7 @@ services:
   # R for Books
   ######################################################
   r-book:
-    image: tidylab/book:4.1.2
+    image: tidylab/book:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-book/Dockerfile
@@ -60,7 +60,7 @@ services:
   # R for Microservices
   ######################################################
   r-microservice:
-    image: tidylab/microservice:4.1.2
+    image: tidylab/microservice:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-microservice/Dockerfile
@@ -72,7 +72,7 @@ services:
   # R for Stan <https://mc-stan.org/>
   ######################################################
   r-stanverse:
-    image: tidylab/stanverse:4.1.2
+    image: tidylab/stanverse:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-stanverse/Dockerfile
@@ -84,7 +84,7 @@ services:
   # R for Robyn <https://github.com/facebookexperimental/Robyn/>
   ######################################################
   r-robyn:
-    image: tidylab/robyn:4.1.2
+    image: tidylab/robyn:4.1.3
     build:
       context: ./
       dockerfile: ./inst/docker/r-robyn/Dockerfile
