@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tidylab.github.io/tidylab//index.html</loc>
+    <loc>https://tidylab.github.io/tidylab/404.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//reference/logo.html</loc>
+    <loc>https://tidylab.github.io/tidylab/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//reference/tidylab_conflicts.html</loc>
+    <loc>https://tidylab.github.io/tidylab/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//reference/tidylab_deps.html</loc>
+    <loc>https://tidylab.github.io/tidylab/articles/01-docker-images.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//reference/tidylab_logo.html</loc>
+    <loc>https://tidylab.github.io/tidylab/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//reference/tidylab_packages.html</loc>
+    <loc>https://tidylab.github.io/tidylab/authors.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//reference/tidylab_update.html</loc>
+    <loc>https://tidylab.github.io/tidylab/index.html</loc>
   </url>
   <url>
-    <loc>https://tidylab.github.io/tidylab//articles/articles/01-docker-images.html</loc>
+    <loc>https://tidylab.github.io/tidylab/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab/reference/logo.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab/reference/tidylab_conflicts.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab/reference/tidylab_deps.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab/reference/tidylab_logo.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab/reference/tidylab_packages.html</loc>
+  </url>
+  <url>
+    <loc>https://tidylab.github.io/tidylab/reference/tidylab_update.html</loc>
   </url>
 </urlset>
