@@ -1,5 +1,5 @@
 # R Package Development: Stan --------------------------------------------------
-FROM tidylab/package:4.1.3
+FROM tidylab/package:4.2.1
 
 RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
        apt-utils ed libnlopt-dev libv8-dev libclang-dev ccache libxt-dev \

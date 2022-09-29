@@ -1,5 +1,5 @@
 # R Package Development: Book --------------------------------------------------
-FROM tidylab/package:4.1.3
+FROM tidylab/package:4.2.1
 
 # Additional Packages ----------------------------------------------------------
 RUN R -q -e "install_cran('tidyverse', dependencies = TRUE)"
